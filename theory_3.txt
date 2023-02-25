@@ -1,0 +1,145 @@
+1. Зачем нужны функции?
+    Функции оптимизируют программу. Они позволяют группировать и обобщать программный код, который может позднее использоваться произвольное число раз в любом месте.
+
+2. Когда лучше использовать анонимную функцию, а когда именованную?
+    Анонимную функцию используют для выполнения какого-то кода в коллбэках, где повторный вызов этой функции не предусмотрен, объявляется в месте использования. Следовательно, именованную создаем, когда нужно к ней впоследствие обращаться, объявлять можно сколько угоднр раз и в разных местах программы
+
+3. Создайте по 3 примера анонимной и именованной функций.
+
+    Именованные функции
+    1. 
+        function check(num: number) : void {
+        if (Number.isInteger(num)) console.log("Целое число");
+        else console.log("Дробное число");
+        }
+        check(5);
+
+    2.
+        function write(str: string) : void {
+        console.log(str);
+        }
+        write("Привет! ;-)))");
+
+    3.
+        function calc(num1: number, num2: number) : number {
+        return (num1 + num2) / 2;
+        }
+        console.log(calc(5, 3));
+
+    Анонимные функции
+    1.
+        let write = function() : void {
+            console.log("Привет! ;-)))");
+        };
+        write();
+
+    2.
+        let calc = function(num1: number, num2: number) : number {
+            return (num1 + num2) / 2;
+        }
+        console.log(calc(5, 3));
+
+    3.
+        btn.addEventListener('click', function() : void {
+        console.log("Жмяк удался ;-)");
+        })
+
+4. Что будет, если указать необязательные параметры первыми в списке из трёх параметров.
+    Выведется ошибка "A required parameter cannot follow an optional parameter", но код все равно отработает
+
+5. Зачем нужны функции без параметров?
+    Они нужны, если есть необходимость каким-то образом повлиять на внешние переменные. Так же они широко используются в качестве параметра для другой функции.
+
+6. Создайте по 3 примера функций с необязательными параметрами и параметрами по умолчанию.
+
+    Функции с необязательными параметрами
+    1. 
+        let calc = function(num1: number, num2?: number) : number {
+            if(num2 != undefined) {
+            return (num1 + num2) / 2;
+            }
+            return num1;
+        }
+        calc(5);
+        calc(5, 3);
+
+    2.
+        function write(str: string, name?: string) : string {
+        if(name != undefined) {
+            return str + ", " + name + " :-)";
+            }
+            return str;
+        }
+        console.log(write("Привет"));
+        console.log(write("Привет", "Иван"));
+
+    3.
+        function test(str?: string) : string {
+        if(str) return str;
+        return ("нет строки");
+        }
+        console.log(test());
+        console.log(test("Я тут"));
+
+    Функции с параметрами по умолчанию
+    1.
+        function calc(num1: number = 5, num2: number = 3) : number {
+            return (num1 + num2) / 2;
+            }
+        console.log(calc());
+        console.log(calc(5, 3));
+    2.
+        function write(str: string = "Привет", name: string) : string {
+        if(name != undefined) {
+            return str + ", " + name + " :-)";
+            }
+            return str;
+        }
+        console.log(write(undefined, "Петр"));
+        console.log(write("Доброе утро", "Иван"));
+    
+    3.
+        function test(str: string = "I'm here") : string {
+            if(str) return str;
+            return ("i'm lost");
+        }
+        console.log(test());
+        console.log(test("Я тут"));
+
+
+7. Создайте 3 примера функций с остаточными параметрами.
+
+    1.
+        function test(str: string, ...allStr: string[]) {
+            console.log(str + " " + allStr.join(" "));
+        }
+        test("Мне нравится", "изучать", "новое");
+
+
+    2.
+        function calc(num1: number, ...nums: number[]): number {
+            let sum: number = 0;
+            nums.forEach(n => sum += n);
+            return (num1 + sum) / (1 + nums.length);
+        }
+        console.log(calc(5, 3, 6, 8, 9));
+    3.
+        let newTuple: [number, boolean, string];
+        function write(str: string, ...some: typeof newTuple) : any {
+            return str + ", " + some.join(", ");
+        }
+        console.log(write("Hi", 21, false, "Иван"));
+    3.
+
+8. В чём разница между применением операторов if else и тернарных операторов?
+   По механике работы тернарный оператор похож на инструкцию if...else, но позволяет писать меньше кода и записывать результат работы сразу в переменную. Приминение тернарных операторов позволяет использовать const вместо let.
+
+9. На что следует обратить внимание при работе с циклом while?
+    Цикл while не заботится об инициализации и обновлении переменной цикла. Если не проверять, цикл while может привести к бесконечному циклу. Таким образом, необходимо позаботиться о том, чтобы управление программой не оставалось в цикле while навсегда.
+
+10. Какая разница между операторами циклов for и while?
+    Разница между циклом for и циклом while заключается в том, что в цикле for количество итераций, которые необходимо выполнить, уже известно и используется для получения определенного результата, тогда как в цикле while команда выполняется до тех пор, пока не будет достигнуто определенное условие.
+
+
+
+
